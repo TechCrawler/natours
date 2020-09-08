@@ -21,6 +21,7 @@ const viewRouter = require(`./routes/viewRoutes`);
 const bookingRouter = require(`./routes/bookingRoutes`);
 const cookieParser = require(`cookie-parser`);
 
+// Starting express application
 const app = express();
 
 // Global Middlewares
