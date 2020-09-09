@@ -72,7 +72,7 @@ userSchema.pre(/^find/, function (next) {
 });
 
 userSchema.methods.correctPassword = async function (candidatePassword) {
-  console.log(this);
+  // console.log(this);
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
@@ -83,7 +83,7 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
       10
     );
 
-    console.log(changedTimestamp, JWTTimestamp);
+    // console.log(changedTimestamp, JWTTimestamp);
     return changedTimestamp > JWTTimestamp;
   }
 
@@ -98,7 +98,7 @@ userSchema.methods.createPasswordResetToken = function () {
     .update(resetToken)
     .digest('hex');
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-  console.log({ resetToken }, this.passwordResetToken);
+  // console.log({ resetToken }, this.passwordResetToken);
 
   return resetToken;
 };

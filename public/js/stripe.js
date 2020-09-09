@@ -9,15 +9,13 @@ import { showAlert } from './alerts.js';
 export const bookTour = async (tourID) => {
   try {
     //* 1) GET checkout session from API
-    const session = await axios(
-      `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourID}`
-    );
+    const session = await axios(`/api/v1/bookings/checkout-session/${tourID}`);
     //* 2) Create Checkout Forms + Charge credit card
     await stripe.redirectToCheckout({
       sessionId: session.data.session.id,
     });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     showAlert('error', 'Could not able to process! try again later');
   }
 };

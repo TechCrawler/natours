@@ -20,6 +20,7 @@ const viewRouter = require(`./routes/viewRoutes`);
 
 const bookingRouter = require(`./routes/bookingRoutes`);
 const cookieParser = require(`cookie-parser`);
+const compression = require(`compression`);
 
 // Starting express application
 const app = express();
@@ -65,6 +66,9 @@ app.use(
     whitelist: ['duration', 'ratingsQunatity', 'ratingsAverage'],
   })
 );
+
+// Compression
+app.use(compression());
 
 // Routes
 
